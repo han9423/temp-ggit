@@ -1,0 +1,46 @@
+<div class="inform addUrl">
+    <div class="cancel" onclick="(()=>{$('.inform').remove();$('body').removeClass('informed')})()"></div>
+    <section>克隆github项目</section>
+    <div>
+        <label for="repouri">仓库地址&nbsp;</label><input type="text" name="repouri" id="repouri">
+    </div>
+    <div>
+        <label for="localpath">本地路径&nbsp;</label><input type="text" name="localpath" id="localpath">
+    </div>
+    <div>
+
+    </div>
+    <button class="submitClone">确定</button>
+</div>
+<script>
+    var showInfo = (val,options)=>{
+        if(!$('.informer').hasClass('showed')){
+            $('.informer').addClass('showed ' + options).text(val).show();
+        }else{
+            $('.informer').text('').text(val);
+            setTimeout(()=>{
+                $('.informer').text('').hide()
+                $('.informer').removeClass('showed').removeClass('animation')
+            },5000)
+        }
+    }
+    $('.submitClone').click(function(e){
+        e.preventDefault()
+        var repouri = $('#repouri').val()
+        var localpath = $('#localpath').val()
+        showInfo(`正在克隆${repouri}`, 'animation')
+        if (repouri != '' && localpath !=''){
+            $.put('/clone',{ uri: repouri, localpath: localpath }, function(){
+                if( 0 === data.code){
+                    const handleError = data.err_msg.replace(/\n/g,'').replace(/(.)+(?<=:)/,'')              
+                    $('.informer').removeClass('animation')
+                    showInfo(handleError)
+                }else{
+                    showInfo(`${repouri} $克隆完成$`) 
+                    $('.inform').remove()
+                    $('body').removeClass('informed')
+                }
+            })
+        }
+    })
+</script>

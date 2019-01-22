@@ -1,0 +1,29 @@
+footer{
+    position: absolute;
+    bottom: 0;
+    @include  box(100vw, 10vh);
+    div.introduction{
+        border-radius: 30px;
+        @include posCenter(100px,25px);
+        @include box(200px,50px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        @include transition(background 0.6s ease);
+        a{
+            text-decoration: none;
+            color: #242424;
+            p{
+                font-size: 1.5rem;
+                font-weight: bold;
+            }
+            span{
+                font-size: 0.7rem;
+            }
+        }
+        &:hover{
+            background: #ebebeb;
+        }
+    }
+}

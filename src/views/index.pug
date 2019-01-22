@@ -1,0 +1,43 @@
+extends layout
+
+block scriptLib_jq
+    script(src=jqueryPath)
+
+block headCss
+    link(rel="stylesheet", href=mainAppCssPath)
+    link(rel="stylesheet", href=utilsAppCssPath)
+
+block menu
+    div.menuList
+        include includes/menuList.pug
+    div(class='aboutApp' style='display:none')
+        
+
+
+block mainContainer
+    main
+        aside.showInfo: div.asideContainer
+        div.ggit_logo
+            div.logo_wrapper
+                div.profile_wrapper: div.profile
+                span GGit
+            div.ggitSetting
+                ul
+                    li.darkLight
+                    li.trash 
+                    li.a 
+                    li.b
+        div.listContainer
+            include includes/listBlocks.pug
+
+block footer
+    footer
+        div.introduction: a(href=repoAddress)
+            p=appName
+            span powered by #{author}
+
+block scriptLocalLib
+    script(src="javascripts/utils.js" type="text/javascript")
+    script(src="javascripts/index.js" type="text/javascript")
+    script(src="javascripts/functionLists.js" type="text/javascript")
+    

@@ -1,0 +1,97 @@
+@import './mixin.scss';
+
+.menuBtn{
+    @include box(35px,35px);
+    position: fixed;
+    top: 0; right: 0; 
+    z-index: 12;
+    @include transition(transform 600ms ease);
+    @include icon('../asset/icons/left-square.svg');
+}
+.menuBtnOut{
+    @include icon('../asset/icons/profile.svg');
+    @include transform(translateX(-25vw));
+    @media screen and (max-width: 640px){
+        @include transform(translateX(-55vw));
+    }
+}
+
+.menuList{
+    z-index: 10;
+    position: absolute;
+    top: 0; right: 0;
+    box-sizing: border-box;
+    @include box(25vw, 100vh);
+    @media only screen and (max-width: 640px){
+        @include box(55vw, 100vh);
+    }
+    @include backgroundImageLinear(rgb(253, 253, 253),rgb(251, 251, 251));
+    box-shadow: 2px 5px 10px #9b9b9b;
+    @include border;
+    @include transition(transform 400ms ease);
+    @include transform(translateX(500px));
+    .menuContainer{
+        @include box(60%, 50vh);
+        margin: 50px auto;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        li{
+            a{ text-decoration: none;color: #000;}
+            list-style: none;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+            font-weight: bold;
+            box-sizing: border-box;
+            &:hover{
+                border-bottom:2.7px solid #404040;
+            }
+        }
+    }
+    .aboutAuthor{
+        @include box(120px, 40px);
+        position: absolute;
+        bottom: 10px; left: 50%;
+        margin-left: -60px;
+        @include transition(all 0.6s);
+        .aboutWrapper{
+            &:hover{
+                border-bottom: 4px solid #404040;   
+            }
+            .authorIcon{
+                @include box(40px, 40px);
+                background-image: url(../asset/icons/idcard.svg);
+                background-size: cover;
+                display: inline-block;
+            }
+            span{
+                font-weight: bold;
+                display: inline-block;
+                @include box(80px, 40px);
+                position: absolute;
+                top: 50%; margin-top: -20px;
+                text-align: right;
+                line-height: 40px;
+            }
+        }
+    }
+    .aboutApp{
+        margin-top: 50px;
+        li{
+            text-align: center;
+            @include box(100%, 50px);
+            list-style: none;
+            font-weight: bold;
+        }
+    }
+    .backToList{
+        position: absolute;
+        right: 20px;
+        @include btn-scale(0.8);
+    }
+}
+.menuListOut{
+    @include transform(translateX(0));
+}

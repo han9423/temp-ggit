@@ -1,0 +1,79 @@
+@import './common.scss';
+
+@mixin boxme{
+    @include box(30px,30px);
+    background-size: cover;
+}
+
+.gitConfig{
+    @include box(28vw, 100%);
+    ul{
+        @include box(28vw, 50%);
+        li{ 
+            margin: 15px auto;
+            list-style: none;
+            @include box(25vw, 60px);
+            background-image: -webkit-linear-gradient(rgb(253, 253, 253),rgb(251, 251, 251));
+            box-shadow: 2px 5px 10px #e4e4e4;
+            border:0.5px solid rgb(204, 204, 204);
+            @include btn-down;
+            @include transition(all .6s);
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &:hover{
+                @include transform(scale(1.04));
+                box-shadow: 2px 2px 5px #e4e4e4;
+            }
+            div{
+                display: inline-block;
+            }
+            .i{
+                @include boxme;
+                background-image: url('../asset/user.svg');   
+            }
+            .k{
+                @include boxme;
+                background-image: url('../asset/钥匙.svg');   
+            }
+            .s{
+                @include boxme;
+                background-image: url('../asset/配置管理.svg');
+            }
+        }
+    }
+    .display-sitting{
+        @include box(28vw, 50%);
+        div{
+            @include box(28vw, 90%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            p{
+                margin-bottom: 15px;
+                @include box(24vw, 35px);
+                input{
+                    @include box(20vw, 30px);
+                }
+            }
+            button{
+                @include button;
+            }   
+            textarea{
+                padding: 10px;
+                margin-top: 20px;
+                box-sizing: border-box;
+                @include box(100%, 100%);
+                resize: none;
+                font-size: 15px;
+                // text-indent: 15px;
+                outline: none;
+            }
+        }
+        .gitlist{
+            font-size: 15px;
+        }
+    }
+}

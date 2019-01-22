@@ -1,0 +1,63 @@
+@import './common.scss';
+.container{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-left: 30px;
+    margin-bottom: 30px;
+    @include box(60vw,70vh);
+    // background-color: #eeeeee;
+    // box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.555);
+    border-radius: 5px;
+    ul{
+        @include box(100%,100%);
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        justify-content: space-around;
+        align-content: space-around;
+        position: relative;
+        li{
+            @include box(27vw,17vh);
+            border-radius: 15px;
+            background-image: -webkit-linear-gradient(rgb(253, 253, 253),rgb(251, 251, 251));
+            box-shadow: 2px 5px 10px #e4e4e4;
+            border:0.5px solid rgb(204, 204, 204);
+            font-size: 20px;
+            @include  btn-down;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .icon1{
+                @include box(50px,50px);
+                background-image: url(../asset/创建任务模板.svg);
+                background-size: cover;
+            }
+            .icon2{
+                @include box(50px,50px);
+                background-image: url(../asset/分支模板.svg);
+                background-size: cover;
+            }
+            .icon3{
+                @include box(50px,50px);
+                background-image: url(../asset/最近服务资源模板.svg);
+                background-size: cover;
+            }
+            .icon4{
+                @include box(50px,50px);
+                background-image: url(../asset/字符串处理模板.svg);
+                background-size: cover;
+            }
+            .icon5{
+                @include box(50px,50px);
+                background-image: url(../asset/子策略模板.svg);
+                background-size: cover;
+            }
+            .icon6{
+                @include box(50px,50px);
+                background-image: url(../asset/留言模板.svg);
+                background-size: cover;
+            }
+        }
+    }
+}

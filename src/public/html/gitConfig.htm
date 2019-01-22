@@ -1,0 +1,89 @@
+<div class="gitConfig">
+    <ul>
+        <li class="user_name">
+            <div class="i"></div>
+            <span>设置用户</span>
+        </li>
+        <li class="user_situation">
+            <div class="s"></div>
+            <span>设置情况</span>
+        </li>
+        <li class="user_key">
+            <div class="k"></div>
+            <span>设置密钥</span>
+        </li>
+    </ul>
+
+    <div class="display-sitting"></div>
+</div>
+
+<script>
+    var className = ['user_name', 'user_key', 'user_situation']
+    var user_display = `<div class='user_box'>
+                                <p>用户 <input type='text' id='username'></p>
+                                <p>邮箱 <input type='email' id='email'></p>
+                                <button>确定</button>
+                            </div>`
+    var key_display = `<div>
+                                <section>密钥(将密钥存放至github 详情见教程)</section>
+                                <textarea readonly class='key-box' placeholder='请先设置邮箱'></textarea>
+                            </div>`
+    var display_list = `<div class='gitlist'>
+                                <textarea class='key-box1'></textarea>
+                          </div>`
+    var d = $('.display-sitting')
+    className.forEach((val)=>{
+        $(`.${val}`).click(function (){
+            if($(this).is('.user_name')){
+                if(!$(this).hasClass('sitting-showed')){
+                    d.empty()
+                    $(this).addClass('sitting-showed')
+                    d.append(user_display)
+                    $('.user_key').removeClass('sitting-showed')
+                    $('.user_situation').removeClass('sitting-showed')
+                    $('.user_box button').click(()=>{
+                        var $uval = $('#username').val();
+                        var $eval = $('#email').val();
+                        if(($uval !== '' && $eval !== '')){
+                            $.post('/config/configuser',{
+                                username: $uval,
+                                email: $eval
+                            },function(data){
+                                if(1 === data.code){
+                                    m_inform.show(data)
+                                }
+                            })
+                        }
+                    })
+                }
+            }else if($(this).is('.user_key')){
+                if(!$(this).hasClass('sitting-showed')){
+                    d.empty()
+                    $(this).addClass('sitting-showed')
+                    d.append(key_display)
+                    $('.user_situation').removeClass('sitting-showed')
+                    $('.user_name').removeClass('sitting-showed')
+                    $.post('/config/getkey',function(key){
+                        if(1 === key.code){
+                            $('.key-box').text(key.srv_msg)
+                        }
+                    })
+                }
+            }else if($(this).is('.user_situation')){
+                if(!$(this).hasClass('sitting-showed')){
+                    d.empty()
+                    $(this).addClass('sitting-showed')
+                    d.append(display_list)
+                    $('.user_name').removeClass('sitting-showed')
+                    $('.user_key').removeClass('sitting-showed')
+                    $.get('/config/initconfig',function(key){
+                        if(1 === key.code){
+                            $('.key-box1').text(key.data_msg)
+                        }
+                    })
+                }
+            }
+        })
+    })
+
+</script>

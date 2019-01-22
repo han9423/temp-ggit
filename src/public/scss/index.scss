@@ -1,0 +1,197 @@
+$borderColor: #404040;
+$logoUrl: url('../asset/20181203205633.jpg');
+
+@import './mixin.scss';
+@import './footer.scss';
+@import './menu.scss';
+
+main{
+    overflow: hidden;
+    position: relative;
+    @include box (100vw,90vh);
+
+    // ggit header部分
+    .ggit_logo{
+        @include box(70vw, 20vh);
+        position: relative;
+        .logo_wrapper{
+            @include box(200px, 20vh);
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            .profile_wrapper{
+                @include animation(logo_translate 900ms ease);
+                @include box(70px, 70px);
+                position: absolute;
+                left: 50px;
+                bottom: 20px;
+                .profile{
+                    @include box(70px, 70px);
+                    background: $logoUrl;
+                    background-size: cover;
+                    display: inline-block;
+                    border-radius: 100%;
+                    box-shadow: 3px 5px 10px #b5b5b5;
+                    @include animation(logo_rotate 900ms ease);
+                }
+            }
+            span{
+                font-size: 45px;
+                user-select: none;
+                font-weight: bold;
+                text-shadow: 3px 2px 5px #b5b5b5;
+                position: absolute;
+                bottom: 10px;
+                right: 10px;
+            }
+        }
+        //ggit 设置
+        .ggitSetting{
+            position: absolute;
+            bottom: 0;right: 0;
+            @include box(400px, 35px);
+            margin-right: 100px;
+            ul{
+                @include box(100%, 100%);
+                display: flex;
+                justify-content: space-around;
+                li{
+                    float: left;
+                    list-style: none;
+                    @include box(35px, 35px);
+                    @include transition(all 300ms);
+                    &:hover{
+                        @include transform(scale(1.2));
+                    }
+                    &:active{
+                        @include transform(scale(0.8));
+                    }
+                }
+                li.darkLight{
+                    @include icon('../asset/icons/bulb.svg');
+                }
+                li.trash{
+                    @include icon('../asset/icons/delete.svg');
+                }
+                li.a{
+                    @include icon('../asset/icons/canlendar.svg');
+                }
+                li.b{
+                    @include icon('../asset/icons/car.svg');
+                }
+            }
+        }
+    }
+    .showInfo{
+        @include box(30vw, 90vh);
+     
+        float: right;
+        &:after{
+            @include clear;
+        }
+    }
+
+    .listContainer{
+        @include box(70vw,70vh);
+        border-radius: 5px;
+        ul.function_lists{
+            @include box(85%,100%);
+            padding-left: 40px;
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-content: space-around;
+            position: relative;
+
+            li.block{
+                @include box(18vw,20vh);
+                border-radius: 15px;
+                @include border;
+                @include backgroundImageLinear(rgb(253, 253, 253),rgb(251, 251, 251));
+                box-shadow: 2px 5px 10px #e4e4e4;
+                font-size: 20px;
+                @include  btn-down;
+                position: relative;
+                .status_block{
+                    @include box(40px, 10px);
+                    position: absolute;
+                    left: 5px;top: 5px;
+                    li{
+                        margin-right: 2px;
+                        @include box(5px, 5px);
+                        @include border;
+                        border-radius: 5px;
+                        list-style: none;
+                        float: left;
+                    }
+                    li:nth-child(1){
+                        // background-color: #fff;                        
+                        background-color: #55fa08;
+                    }
+                    li:nth-child(2){
+                        background-color: #fa0808;
+                    }
+                    li:nth-child(3){
+                        // background-color: #fff;
+                        background-color: #08d6fa;
+                    }
+                    &:after{
+                        @include clear;
+                    }
+                }
+                
+                .function_title{
+                    @include box(140px, 40px);
+                    @include posCenter(70px, 20px);
+                    // @include testBorder;
+                    .baseIcon{
+                        display: inline-block;
+                    }
+                    .function_name{
+                        display: inline-block;
+                        @include box(90px, 40px);
+                        position: absolute;
+                        top: 50%; margin-top: -20px;
+                        right: 0px;
+                        font-weight: bold;
+                        text-align: center;
+                        line-height: 40px;
+                    }
+                    .function_icon1{
+                        @include box(40px, 40px);
+                        background-image: url(../asset/icons/folder-add.svg);
+                        background-size: cover;
+                    }
+                    .function_icon2{
+                        @include box(40px, 40px);
+                        background-image: url(../asset/icons/sliders.svg);
+                        background-size: cover;
+                    }
+                    .function_icon3{
+                        @include box(40px,40px);
+                        background-image: url(../asset/icons/hdd.svg);
+                        background-size: cover;
+                    }
+                    .function_icon4{
+                        @include box(40px,40px);
+                        background-image: url(../asset/icons/setting.svg);
+                        background-size: cover;
+                    }
+                    .function_icon5{
+                        @include box(40px,40px);
+                        background-image: url(../asset/icons/reconciliation.svg);
+                        background-size: cover;
+                    }
+                    .function_icon6{
+                        @include box(40px,40px);
+                        background-image: url(../asset/icons/book.svg);
+                        background-size: cover;
+                    }   
+                }
+            }
+        }
+    }
+}
+
+@import './animations.scss';

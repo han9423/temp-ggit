@@ -1,0 +1,153 @@
+@import '../scss/common.scss';
+@mixin dir{
+    background-size: cover;
+    @include box(55px,55px);
+}
+
+.dealForm{
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    @include box(32vw,90vh);
+    @import  './gitConfig.scss';
+    
+    .information{
+        overflow: hidden;
+        @include box(28vw, 90vh);
+        .init_infor{
+            @include box(28vw, 35vh);
+            .current_info{
+                text-align: center;
+                @include box(28vw, 10vh);
+                line-height: 10vh;
+            }   
+            .action_now{
+                @include box(27vw, 25vh);
+                margin: 0 auto;
+                display: flex;
+                justify-content: space-between;
+                position: relative;
+                button{
+                    @include btn-down;
+                    border: none;
+                    margin-top: 10px;
+                    outline: none;
+                    @include box (90px,35px);        
+                    text-align: center;
+                    line-height: 25px;
+                    background-image: -webkit-linear-gradient(rgb(253, 253, 253),rgb(251, 251, 251));
+                    box-shadow: 2px 5px 10px #e4e4e4;
+                    overflow: hidden;
+                }
+                .inall{
+                    @include box(27vw,20px);
+                    position: absolute;
+                    bottom: 0;
+                    label{
+                        vertical-align: top;
+                        float: right;
+                    }
+                    input{
+                        float: right;
+                        @include box(20px,20px);
+                        outline: none;
+                        margin-left: 5px;
+                    }
+                    &:after{
+                        @include clear;
+                    }
+                }
+                // background-color: pink;
+            }
+        }
+        .repoContainer{
+            position: absolute;
+            bottom: 0;
+            @include box(28vw, 55vh);
+            overflow: hidden;
+            .repoWrapper{
+                @include box(30vw, 55vh);
+                overflow-y: auto;
+                .repo{
+                    display: flex;
+                    justify-content: space-around;
+                    align-content: flex-start;
+                    flex-wrap: wrap; 
+                    width: 28vw;
+                }
+            }
+        }
+        .dir{
+            @include box(100px,100px);
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            &:hover{
+                background-color: rgb(238, 238, 238);
+            }
+            span{
+                display: inline-block;
+                @include box(100px, 20px);
+                text-overflow: ellipsis;
+                text-align: center;
+            }
+            .folder{
+                background: url(../asset/文件夹未共享.svg);
+                background-size: cover;
+                width: 55px;
+                height: 55px;
+            }
+            .img{
+                @include dir;
+                background: url(../asset/iconfinder_jpg.svg);
+            }
+            .gif{
+                @include dir;
+                background: url(../asset/iconfinder_gif.svg);
+            }
+            .png{
+                @include dir;
+                background: url(../asset/iconfinder_png.svg);
+            }
+            .java{
+                @include dir;
+                background: url(../asset/iconfinder_java.svg);
+            }
+            .php{
+                @include dir;
+                background: url(../asset/iconfinder_php.svg);
+            }
+            .html{
+                @include dir;
+                background: url(../asset/iconfinder_html.svg);
+            }
+            .css{
+                @include dir;
+                background: url(../asset/iconfinder_css.svg);
+            }
+            .txt{
+                @include dir;
+                background: url(../asset/iconfinder_txt.svg);
+            }
+            .bin{
+                @include dir;
+                background: url(../asset/iconfinder_bin.svg);
+            }
+            
+            .js{
+                @include dir;
+                background: url(../asset/iconfinder_js.svg);
+            }
+            .zip{
+                @include dir;
+                background: url(../asset/iconfinder_zip.svg);
+            }
+
+        }
+        .marked{
+            background-color: rgb(238, 238, 238);
+        }
+    }
+}

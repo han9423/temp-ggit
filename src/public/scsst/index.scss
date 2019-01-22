@@ -1,0 +1,145 @@
+@import './mixin.scss';
+@import './footer.scss';
+
+main{
+    overflow: hidden;
+    position: relative;
+    @include box (100vw,90vh);
+    // background-color: pink;
+    .logo{
+        @include box(300px,60px);
+        margin-left: 30px;
+        margin-top: 20px;
+        align-self: flex-start;
+        // background-color: orange;
+        .profile{
+            @include box(60px,60px);
+            background: url(../asset/20181203205633.jpg);
+            background-size: cover;
+            display: inline-block;
+        }
+        span{
+            width: 50px;
+            font-size: 30px;
+            font-weight: bold;
+        }
+    }
+    // @import './dealForm.scss';
+    // @import './container.scss';
+
+    .menuBtn{
+        @include box(35px,35px);
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 10;
+        overflow: hidden;
+        ul{
+            box-sizing: border-box;
+            background: #d6d6d6;
+            @include box(35px, 35px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            li{
+                list-style: none;
+                width: 30px;
+                height: 5px;
+                background-color: rgb(124, 123, 123);
+                @include transition(all 0.3s ease);
+            }
+        }
+        &:hover{
+            ul{
+                @include transform(translate(6px,-3px));
+                li{
+                    @include transform(translate(-6px,6px));
+                };
+            }
+        }
+        &:active{
+            ul{
+                li{
+                    @include transform(scale(0.8));
+                };
+            }
+        }
+    }
+
+}
+
+// --------------------------------------------------------------------------
+
+.inform{
+    @include box(500px, 300px);
+    border-radius: 15px;
+    background-image: -webkit-linear-gradient(rgb(253, 253, 253),rgb(251, 251, 251));
+    border:0.5px solid rgb(204, 204, 204);
+    font-size: 20px;
+    display: inline-block;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -250px;
+    margin-top: -150px;
+    z-index: 10;
+    border-radius: 10px;
+    @include animation(inform .5s ease);
+    text-align: center;
+}
+
+.addUrl{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    .cancel{
+        @include  cancel;
+    }
+    div{
+        input{
+            @include box(200px,30px);
+            font-size: 20px;
+        }
+    }
+    button{
+        @include button;
+    }
+}
+
+
+.addPath{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    .cancel{
+        @include  cancel;
+    }
+    div{
+        width: 300px;
+        height: 100px;
+        textarea{
+            width: 300px;
+            height: 100px;
+            resize: none;
+            font-size: 20px;
+            text-decoration: none;
+        }
+    }
+    button{
+        @include button;
+    }
+}
+
+
+@keyframes inform{
+    from{
+        @include transform(translate(0,-500px));
+    }to{
+        @include transform(translate(0,0));
+    }
+}
+
+
